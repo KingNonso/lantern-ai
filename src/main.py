@@ -2,7 +2,7 @@ import csv
 import os
 import shutil
 from typing import Dict
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import FastAPI, File, HTTPException, UploadFile, Form
 from fastapi.responses import JSONResponse
 from pdf_service import PdfService
 
@@ -46,7 +46,7 @@ def read_root():
     return JSONResponse(content={"summary": summary})
 
 @app.post("/upload/")
-async def upload_pdf(file: UploadFile = File(...), company_name: str = ""):
+async def upload_pdf(company_name: str = Form(...), file: UploadFile = File(...)):
     file_location = f"assets/{file.filename}"
     with open(file_location, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
@@ -63,7 +63,7 @@ async def upload_pdf(file: UploadFile = File(...), company_name: str = ""):
         raise HTTPException(status_code=404, detail="Company data not found.")
     
     summary = compare_data(extracted_data, stored_data)
-    return summary
+    return JSONResponse(content={"summary": summary})
 
 # Cache dictionary: this mocks a possible cache implementation
 cache = {}
