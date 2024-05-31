@@ -108,7 +108,7 @@ def csv_to_dict(file_path):
             'mtime': file_stat.st_mtime
         }
     except FileNotFoundError:
-        raise FileNotFoundError("CSV file not found")
+        raise HTTPException(status_code=404, detail="CSV file not found")
     return result
 
 def get_stored_data(company_name):

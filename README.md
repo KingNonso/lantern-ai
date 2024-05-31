@@ -1,3 +1,50 @@
+# Notes
+
+Follow Test-driven development approach
+![terminal testing output](static/testoutput.png)
+
+Compare all keys from both stored and extracted data
+![browser output comparing all keys](static/browseroutput.png)
+
+## Following best practice and being SOLID
+
+### API Design Best Practices
+
+RESTful Design Principles: Design the API following REST principles to ensure it's intuitive and easy to use. Use appropriate HTTP methods (GET, POST, etc.) and status codes (200, 400, 404, etc.).
+
+Input Validation and Error Handling: Validate user inputs to prevent incorrect data from being processed. Handle errors gracefully and provide meaningful error messages.
+
+Documentation: Document the API endpoints, their inputs, outputs, and any potential errors. Use tools like Swagger or Redoc to generate interactive API documentation.
+
+### Code Quality and Maintainability
+
+Modular Code Structure: Organize the code into modules and functions with single responsibilities to enhance readability and maintainability.
+
+Type Annotations: Use type annotations to make the code more understandable and to leverage static type checkers like mypy.
+
+Configurable Settings: Externalize configuration settings such as file paths, API keys, and other parameters to a configuration file or environment variables.
+
+### Testing Best Practices
+
+Unit Tests: Write unit tests for individual functions and classes to ensure they work as expected. Use mocking to isolate components and avoid dependencies on external services.
+
+Integration Tests: Write integration tests to ensure that the components work together as expected. Test the API endpoints thoroughly.
+
+Test Coverage: Aim for high test coverage to ensure that most of the code is tested. Use tools like `pytest-cov` to measure test coverage.
+
+Continuous Integration: Use CI/CD pipelines to run tests automatically on every commit or pull request to catch issues early.
+
+### Performance and Scalability
+
+Caching: Implement caching for expensive operations, such as reading and parsing large files, to improve performance.
+
+Concurrency: If applicable, use asynchronous programming to handle multiple requests concurrently and improve scalability.
+
+Security Best Practices
+Authentication and Authorization: Secure the API endpoints using authentication and authorization mechanisms to ensure that only authorized users can access the API.
+
+Data Sanitization: Sanitize inputs to prevent security vulnerabilities such as SQL injection and cross-site scripting (XSS).
+
 # Data discrepancy checker
 
 This task mirrors a system we recently built internally, and will give you an
